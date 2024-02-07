@@ -1,0 +1,64 @@
+.dropdown {
+    margin-left: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.title {
+    margin: 0 0 10px 0;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.button {
+    border: none;
+    border-radius: 10px;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 17px;
+    background-color: rgba(128, 128, 128, 0.397);
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    width: 253px;
+    box-sizing: border-box;
+}
+
+.button:hover {
+    opacity: .8;
+}
+
+.list {
+    padding: 25px 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    border-radius: 10px;
+    border: 0.5px solid rgba(99, 99, 99, 0.2);
+    background-color: #fff;
+    list-style: none;
+    width: 253px;
+}
+
+.listItem {
+    width: 100%;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+    text-align: left;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.listItem:hover {
+    opacity: .4;
+}
+
+.listItem:not(:last-of-type) {
+    margin-bottom: 5px;
+}

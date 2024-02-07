@@ -1,0 +1,8 @@
+.formPage {
+    /* background: rgb(204,171,216);
+    background: linear-gradient(117deg, rgba(204,171,216,1) 0%, rgba(255,221,148,0.42620798319327735) 37%, rgba(255,255,255,1) 100%); */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

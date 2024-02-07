@@ -1,0 +1,15 @@
+.containerTitle {
+    margin: 20px 0;
+    font-size: 25px;
+}
+
+.container {
+
+}
+.section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    font-family: "Roboto";
+    font-weight: 500;
+}

@@ -1,0 +1,60 @@
+.section {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 0.5px solid rgba(128, 128, 128, 0.397);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 17px;
+    overflow-wrap: break-word;
+}
+.table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.td {
+    padding: 20px;
+    max-width: 400px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.tdText {
+
+    margin: 0;
+    padding: 0;
+}
+
+.tdLink {
+    margin: 0;
+    padding: 0;
+    
+    text-decoration: none;
+    color: black;
+
+}
+
+.tdLink:hover {
+    text-decoration: underline;
+}
+
+.th {
+    text-align: left;
+    padding: 20px;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.397);
+}
+
+.tbody .tr:hover {
+    background-color: #ddd;
+}
+
+.lockIcon {
+    height: 15px;
+    width: 15px;
+    margin-left: 15px;
+}
