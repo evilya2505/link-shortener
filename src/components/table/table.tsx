@@ -6,6 +6,8 @@ import { TSqueezeObj } from "../../utils/types";
 import lockIcon from '../../images/padlock.png';
 import Pagination from "../pagination/pagination";
 import { useNavigate } from "react-router-dom";
+import statisticsIcon from '../../images/statistics.png';
+
 interface ITableProps {
 
 }
@@ -19,6 +21,7 @@ const Table: React.FC<ITableProps> = ({  }: ITableProps): JSX.Element => {
     const currentPage: number = useSelector(
         (store) => store.pagination.currentPage
         );
+    const pagesAmount: number = useSelector((store) => store.pagination.totalPages);
 
     useEffect(() => {
         navigate(`/statistics/page/${currentPage}`);
@@ -32,7 +35,7 @@ const Table: React.FC<ITableProps> = ({  }: ITableProps): JSX.Element => {
             <tr className={table.tr}>
             <th className={table.th}>Короткая ссылка</th>
             <th className={table.th}>Полная ссылка</th>
-            <th className={table.th}>Количество переходов</th>
+            <th className={table.th}><img src={statisticsIcon} alt="недоступно" className={table.lockIcon}/>Количество переходов</th>
             </tr>
         </thead>
         <tbody className={table.tbody}>
@@ -45,14 +48,16 @@ const Table: React.FC<ITableProps> = ({  }: ITableProps): JSX.Element => {
                     <a target="_blank" href={item.target}  className={table.tdLink} rel="noreferrer">{item.target}</a>                    
                 </td>
                 <td className={`${table.td} ${table.counterTd}`}>
-                    <p className={table.tdText}>Недоступно<img src={lockIcon} alt="недоступно" className={table.lockIcon}/></p>
+                    <p className={table.tdText}>
+                        {item.counter}
+                    </p>
                 </td>
             </tr>
             ))}
         </tbody>
         </table>
     </section>
-    <Pagination />
+    {pagesAmount > 1 && <Pagination />}
     </>
   );
 };

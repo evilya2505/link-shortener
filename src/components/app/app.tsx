@@ -9,6 +9,7 @@ import { useDispatch } from '../../services/hooks';
 import { setUserInfo } from '../../services/reducers/auth';
 import NewLinkPage from '../../pages/new-link';
 import StatisticsPage from '../../pages/statistics';
+import { checkIsTokenValid } from '../../services/actions/auth';
 
 function App() {
   const location = useLocation();
@@ -22,16 +23,9 @@ function App() {
     }
   }, [location, navigate])
 
-  /* Проверка наличия токена и юзернейма в local storage
-  (в идеале проверять валидность токена или отправлять запрос на получение данных о пользователе, но в данном случае проверяется только его наличие в local storage) */
+  /* Отправляем запрос для получени статистики, чтобы проверить, что токен актуален*/
   useEffect(() => {
-    const accessToken = localStorage.getItem("access_token")
-    const username = localStorage.getItem("username");
-
-    // Если access token и username хранятся в local storage, то сохраняем username в хранилище redux
-    if (accessToken && username) {
-      dispatch(setUserInfo( { username: username } ));
-    }
+    dispatch(checkIsTokenValid());
   }, [dispatch]);
 
   return (

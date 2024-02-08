@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import filter from './filter.module.css';
 import arrowIcon from '../../images/down-arrow.png';
 import Arrow from "../arrow/arrow";
@@ -6,9 +6,10 @@ import Arrow from "../arrow/arrow";
 interface IFilterProps {
   options: string[];
   title: string;
+  handleFilterClick: () => void;
 }
 
-const Filter: React.FC<IFilterProps> = ({  options, title }: IFilterProps): JSX.Element => {
+const Filter: React.FC<IFilterProps> = ({  options, title, handleFilterClick }: IFilterProps): JSX.Element => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string>(options[0]);
   
@@ -17,10 +18,16 @@ const Filter: React.FC<IFilterProps> = ({  options, title }: IFilterProps): JSX.
     };
   
     const selectOption = (option: string) => {
-      setSelectedOption(option);
-      setIsOpen(false);
+      if (option !== selectedOption) {
+        setSelectedOption(option);
+        setIsOpen(false);
+      }
     };
   
+    useEffect(() => {
+      handleFilterClick();
+    }, [selectedOption])
+
   return (
     <>
     <div className={filter.dropdown}>

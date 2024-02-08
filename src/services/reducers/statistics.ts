@@ -2,16 +2,16 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TSqueezeObj } from "../../utils/types";
 
 export interface TStatisticsListState {
-    lastSqueezeResult: TSqueezeObj | null;
-    totalCount: number;
-    statistics: TSqueezeObj[];
+  lastSqueezeResult: TSqueezeObj | null;
+  totalCount: number;
+  statistics: TSqueezeObj[];
   request: boolean;
   requestFailed: boolean;
 }
 
 export const initialState: TStatisticsListState = {
-    lastSqueezeResult: null,
-    totalCount: 0,
+  lastSqueezeResult: null,
+  totalCount: 0,
   statistics: [],
   request: false,
   requestFailed: false,

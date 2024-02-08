@@ -8,6 +8,12 @@
     font-weight: 500;
 }
 
+@media screen and (max-width: 1440px){
+    .section {
+        max-width: 1000px;
+    }
+}
+
 .containerTitle {
     margin: 30px 0 50px;
     font-size: 25px;
@@ -30,6 +36,7 @@
 }
 
 .fieldset {
+    border: 1px solid rgba(128, 128, 128, 0.504);
     padding: 0 0 0 10px;
     box-sizing: border-box;
     margin: 0;
@@ -86,7 +93,7 @@
 
 .resultContainer {
     position: relative;
-    background-color:#ff736954;
+    background-color:rgba(128, 128, 128, 0.222);
     margin: 30px auto 0;
     color: black;
     display: flex;
@@ -142,7 +149,7 @@
     right: 0;
     bottom: -50px;
     color: #0000008f;
-    background-color: rgba(128, 128, 128, 0.329);
+    background-color: rgba(128, 128, 128, 0.13);
     padding: 10px 20px;
     border-radius: 10px;
     opacity: 0;

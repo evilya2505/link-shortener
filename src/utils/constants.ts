@@ -18,3 +18,12 @@ export const DISPLAY_CONFIG: TDisplayConfig = {
         itemsPerPage: 4
     }
 };
+
+export const SORTING_TYPES = {
+    asc_short: 'asc_short', 
+    asc_target: 'asc_target', 
+    asc_counter: 'asc_counter', 
+    desc_short: 'desc_short', 
+    desc_target: 'desc_target', 
+    desc_counter: 'desc_counter'
+}

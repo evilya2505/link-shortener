@@ -17,18 +17,22 @@ const Filters: React.FC<IFiltersProps> = ({ }: IFiltersProps): JSX.Element => {
         'По возрастанию',
         'По убыванию',
     ];
+
+    function handleFilterClick() {
+        console.log("click");
+    }
   return (
     <>
         <h3 className={filters.title}>Сортировка</h3>
         <ul className={filters.filters}>
             <li className={filters.filter}>
-                <Filter title="Короткая ссылка" options={optionsText}/>
+                <Filter handleFilterClick={handleFilterClick} title="Короткая ссылка" options={optionsText}/>
             </li>
             <li className={filters.filter}>
-                <Filter title="Исходная ссылка" options={optionsText}/>
+                <Filter handleFilterClick={handleFilterClick} title="Исходная ссылка" options={optionsText}/>
             </li>
             <li className={filters.filter}>
-                <Filter title="Количество переходов" options={optionsNumber}/>
+                <Filter handleFilterClick={handleFilterClick} title="Количество переходов" options={optionsNumber}/>
             </li>
         </ul>
     </>

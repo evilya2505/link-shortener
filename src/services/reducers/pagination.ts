@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { TSqueezeObj } from "../../utils/types";
 
 export interface TPaginationListState {
     currentPage: number;
@@ -7,8 +6,8 @@ export interface TPaginationListState {
 }
 
 export const initialState: TPaginationListState = {
-    currentPage: 0,
-    totalPages: 0,
+    currentPage: 1,
+    totalPages: 1,
 };
 
 const paginationSlice = createSlice({

@@ -5,7 +5,8 @@ import {
     requestFailed,
     loginRequest,
     loginSuccess,
-    logoutSuccess
+    logoutSuccess,
+    setUserInfo
 } from "../reducers/auth";
 import mainApi from "../../utils/mainApi";
 import { FormValues } from "../../utils/types";
@@ -44,6 +45,24 @@ export const login = (userData: FormValues) => {
           dispatch(requestFailed());
         });
     };
+};
+
+export const checkIsTokenValid = () => {
+  return function (dispatch: AppDispatch) {
+    const username = localStorage.getItem("username");
+
+    mainApi
+    .getStatistics({})
+    .then((data) => {
+      dispatch(setUserInfo( { username: username || "" } ));
+    })
+    .catch((err) => {
+      if (err == "Ошибка: 401") {
+        dispatch(logout());
+        localStorage.setItem("token_error", "true");
+      }
+    });
+  };
 };
 
 export const logout = () => {

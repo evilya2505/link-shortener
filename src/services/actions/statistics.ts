@@ -10,10 +10,12 @@ import mainApi from "../../utils/mainApi";
 import { TSqueezeRequest } from "../../utils/types";
 import { setTotalCount } from "../reducers/pagination";
 import { countPages } from "../../utils/utils";
+import { logout } from "./auth";
+
 export const getStatistics = (requestData: TSqueezeRequest) => {
   return function (dispatch: AppDispatch) {
     dispatch(getStatisticsRequest());
-
+    
     mainApi
       .getStatistics(requestData)
       .then((data) => {
@@ -22,7 +24,7 @@ export const getStatistics = (requestData: TSqueezeRequest) => {
         if (data.totalCount) dispatch(setTotalCount(countPages(10, data.totalCount)));
       })
       .catch((err) => {
-        console.log(err);
+        if (err == "Ошибка: 401") dispatch(logout());
         dispatch(requestFailed());
       });
   };
@@ -40,6 +42,7 @@ export const squeezeLink = (targetLink: string) => {
         })
         .catch((err) => {
           console.log(err);
+          if (err == "Ошибка: 401") dispatch(logout());
           dispatch(requestFailed());
         });
     };

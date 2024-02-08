@@ -13,3 +13,9 @@
     font-family: "Roboto";
     font-weight: 500;
 }
+
+@media screen and (max-width: 1440px){
+    .section {
+        max-width: 1000px;
+    }
+}

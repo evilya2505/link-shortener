@@ -6,7 +6,7 @@ import Header from "../components/header/header";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "../services/hooks";
 import { getStatistics } from "../services/actions/statistics";
-
+import { useLocation } from "react-router-dom";
 interface IStatisticsPageProps {
 }
 
@@ -15,9 +15,9 @@ const StatisticsPage: React.FC<IStatisticsPageProps> = ({}: IStatisticsPageProps
     const dispatch = useDispatch();
 
     useEffect(() => {
-        let page:number = pageNumber ? parseInt(pageNumber) : 0;
-        console.log(pageNumber);
-        dispatch(getStatistics({ offset: page * 10, limit: 10 }));
+        let page:number = pageNumber ? parseInt(pageNumber) : 1;
+
+        dispatch(getStatistics({ offset: (page - 1) * 10, limit: 10 }));
     }, [dispatch, pageNumber])
     
     return (
