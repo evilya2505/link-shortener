@@ -44,3 +44,8 @@ _/new-link_
 #### Страница создания новой ссылки:
 
 _/statistics_
+
+
+## Ссылка на Vercel
+
+https://link-shortener-woad.vercel.app/
