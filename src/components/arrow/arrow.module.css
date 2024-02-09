@@ -1,8 +1,8 @@
 .icon {
-    width: 15px;
-    height: 15px;
+  width: 15px;
+  height: 15px;
 }
 
 .rotatedIcon {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }

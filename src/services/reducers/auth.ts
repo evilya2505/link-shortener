@@ -4,15 +4,21 @@ import { TUserInfo } from "../../utils/types";
 export interface TAuthListState {
   userInfo: TUserInfo;
   request: boolean;
-  requestFailed: boolean;
   loggedIn: boolean;
+  registerSuccess: boolean;
+  errorText: string;
+  registerFailed: boolean;
+  loginFailed: boolean;
 }
 
 export const initialState: TAuthListState = {
   userInfo: { username: "" },
   request: false,
-  requestFailed: false,
+  registerFailed: false,
+  loginFailed: false,
   loggedIn: false,
+  registerSuccess: false,
+  errorText: "",
 };
 
 const authSlice = createSlice({
@@ -20,37 +26,63 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUserInfo(state: TAuthListState, action: PayloadAction<TUserInfo>) {
-        state.userInfo = action.payload;
-        state.loggedIn = true;
+      state.userInfo = action.payload;
+      state.loggedIn = true;
     },
     registerRequest(state: TAuthListState) {
-        state.request = true;
-        state.requestFailed = false;
+      state.loginFailed = false;
+      state.request = true;
+      state.registerFailed = false;
     },
     registerSuccess(state: TAuthListState, action: PayloadAction<TUserInfo>) {
-        state.request = false;
-        state.requestFailed = false;
+      state.request = false;
+      state.registerSuccess = true;
+      state.registerFailed = false;
+      state.errorText = "";
     },
     loginRequest(state: TAuthListState) {
-        state.request = true;
-        state.requestFailed = false;
+      state.registerFailed = false;
+      state.request = true;
+      state.loginFailed = false;
     },
     loginSuccess(state: TAuthListState, action: PayloadAction<TUserInfo>) {
-        state.userInfo = action.payload;
-        state.request = false;
-        state.requestFailed = false;
-        state.loggedIn = true;
+      state.userInfo = action.payload;
+      state.request = false;
+      state.loginFailed = false;
+      state.loggedIn = true;
+      state.errorText = "";
     },
-    requestFailed(state: TAuthListState) {
-        state.request = false;
-        state.requestFailed = true;
+    loginRequestFailed(
+      state: TAuthListState,
+      action: PayloadAction<string | undefined>
+    ) {
+      state.request = false;
+      state.loginFailed = true;
+      if (action?.payload) state.errorText = action.payload;
+    },
+    registerRequestFailed(
+      state: TAuthListState,
+      action: PayloadAction<string | undefined>
+    ) {
+      state.request = false;
+      state.registerFailed = true;
+      if (action?.payload) state.errorText = action.payload;
     },
     logoutSuccess(state: TAuthListState) {
-        state.loggedIn = false;
-        state.userInfo = { username: "" };
-    }
+      state.loggedIn = false;
+      state.userInfo = { username: "" };
+    },
   },
 });
-export const { setUserInfo, registerRequest, registerSuccess, requestFailed, loginRequest, loginSuccess, logoutSuccess } = authSlice.actions;
+export const {
+  loginRequestFailed,
+  registerRequestFailed,
+  setUserInfo,
+  registerRequest,
+  registerSuccess,
+  loginRequest,
+  loginSuccess,
+  logoutSuccess,
+} = authSlice.actions;
 
 export default authSlice.reducer;

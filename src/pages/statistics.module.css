@@ -1,21 +1,54 @@
-.containerTitle {
-    margin: 20px 0;
-    font-size: 25px;
+.title {
+  margin: 20px 0;
+  font-size: 25px;
 }
 
-.container {
-
-}
 .section {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px 10px;
-    font-family: "Roboto";
-    font-weight: 500;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 10px;
+  font-weight: 500;
 }
 
-@media screen and (max-width: 1440px){
-    .section {
-        max-width: 1000px;
-    }
+.linkCointainer {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text {
+  font-size: 17px;
+}
+
+.link {
+  color: #000;
+  font-size: 17px;
+}
+
+.link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 1440px) {
+  .section {
+    max-width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .section {
+    max-width: 900px;
+  }
+  .text {
+    font-size: 10px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .section {
+    max-width: 800px;
+  }
 }

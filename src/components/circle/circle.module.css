@@ -1,0 +1,39 @@
+.listItem:not(:last-of-type) {
+  margin-right: 20px;
+}
+
+.circle {
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #ededed;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.circle:disabled {
+  background-color: #ff73696c;
+}
+
+.circle:hover {
+  background-color: #ff7369;
+}
+
+.circleActive {
+  background-color: #ff7369;
+}
+
+.circleHidden {
+  visibility: hidden;
+}

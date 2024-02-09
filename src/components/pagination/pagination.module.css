@@ -1,108 +1,25 @@
 .pagination {
-    margin-top: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .listItem:not(:last-of-type) {
-    margin-right: 20px;
-}
-
-.circle {
-    font-family: "Roboto";
-    font-weight: 500;
-    font-size: 15px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: #ededed;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-
-    cursor: pointer;
-
-    transition: all 0.3s ease;
-}
-
-.circle:disabled {
-    background-color: #ff73696c;
-}
-
-.circle:hover {
-    background-color: #ff7369;
-}
-
-.circleActive {
-    background-color: #ff7369;
-}
-
-.circleHidden {
-    visibility: hidden;
+  margin-right: 20px;
 }
 
 .icon {
-    width: 17px;
-    height: 17px;
-}
-
-.form {
-    font-family: "Roboto";
-    font-weight: 500;
-    font-size: 15 px;
-    margin-top: 20px;
-    padding: 5px 20px;
-    background-color: #ededed;
-    border-radius: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.input {
-    margin: 0px 10px 0 20px;
-    border: none;
-    width: 30px; 
-    height: 30px;
-    border-radius: 10px;
-    box-sizing: border-box;
-
-    text-align: center;
-    font-family: "Roboto";
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.input:focus {
-    outline: 1px solid;
-}
-
-.formTitle {
-    margin: 0;
-    padding: 0;
-}
-
-.fieldset {
-    margin: 0;
-    padding: 0;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 17px;
+  height: 17px;
 }

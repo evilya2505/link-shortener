@@ -1,52 +1,51 @@
 export type FormValues = {
-    username: string;
-    password: string;
+  username: string;
+  password: string;
 };
 
-export type GoToFormValues= {
-    pageNumber: number;
-}
+export type GoToFormValues = {
+  pageNumber: number;
+};
 
 export type LinkFormValues = {
-    link: string;
-}
+  link: string;
+};
 
 export type AdditionalText = {
-    text: string;
-    route: string;
-    buttonText: string;
+  text: string;
+  route: string;
+  buttonText: string;
 };
 
 export type TUserInfo = {
-    username: string;
+  username: string;
 };
 
 export type TLoginResult = {
-    access_token: string;
-    token_type: string;
-}
+  access_token: string;
+  token_type: string;
+};
 
 export type TSqueezeObj = {
-    id: number;
-    short: string;
-    target: string;
-    counter: number;
-}
+  id: number;
+  short: string;
+  target: string;
+  counter: number;
+};
 
 export type TSqueezeRequest = {
-    order?: string;
-    offset?: number;
-    limit?: number;
-}
+  order?: TOrder;
+  offset?: number;
+  limit?: number;
+};
 
-export type TDisplay = {
-    maxWidth: number,
-    itemsPerPage: number
-}
+export type TOrder = {
+  short?: string;
+  target?: string;
+  counter?: string;
+};
 
-export type TDisplayConfig = {
-    desktopLarge: TDisplay;
-    desktop: TDisplay;
-    tablet: TDisplay;
-    phoneLarge: TDisplay;
-}
+export type IOption = {
+  id: string;
+  label: string;
+};

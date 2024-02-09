@@ -1,51 +1,80 @@
-import React, { useEffect, useState } from "react";
-import filter from './filter.module.css';
-import arrowIcon from '../../images/down-arrow.png';
+import React, { useState } from "react";
+import filter from "./filter.module.css";
 import Arrow from "../arrow/arrow";
+import { IOption } from "../../utils/types";
+import { useSearchParams } from "react-router-dom";
 
 interface IFilterProps {
-  options: string[];
+  options: IOption[];
   title: string;
-  handleFilterClick: () => void;
+  name: string;
+  defaultOption: IOption;
 }
 
-const Filter: React.FC<IFilterProps> = ({  options, title, handleFilterClick }: IFilterProps): JSX.Element => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<string>(options[0]);
-  
-    const toggleDropdown = () => {
-      setIsOpen(!isOpen);
-    };
-  
-    const selectOption = (option: string) => {
-      if (option !== selectedOption) {
-        setSelectedOption(option);
-        setIsOpen(false);
+const Filter: React.FC<IFilterProps> = ({
+  options,
+  name,
+  title,
+  defaultOption,
+}: IFilterProps): JSX.Element => {
+  const [selectedOption, setSelectedOption] = useState<IOption>(defaultOption);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const selectOption = (option: IOption) => {
+    if (option.label !== selectedOption.label) {
+      setSelectedOption(option);
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+
+      if (option.id) {
+        newSearchParams.set(name, option.id);
+        switch (name) {
+          case "short":
+            setSearchParams({ short: option.id });
+            break;
+          case "target":
+            setSearchParams({ target: option.id });
+            break;
+          case "counter":
+            setSearchParams({ counter: option.id });
+            break;
+        }
+      } else {
+        newSearchParams.delete(name);
       }
-    };
-  
-    useEffect(() => {
-      handleFilterClick();
-    }, [selectedOption])
+      setSearchParams(newSearchParams);
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  };
 
   return (
     <>
-    <div className={filter.dropdown}>
-      <h3 className={filter.title}>{title}</h3>
-      <button className={filter.button} onClick={toggleDropdown}>
-        {selectedOption}
-        <Arrow isOpen={isOpen} />
-      </button>
-      {isOpen && (
-        <ul className={filter.list}>
-          {options.map((option, index) => (
-            <li className={filter.listItem} key={index} onClick={() => selectOption(option)}>
-              {option}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+      <div className={filter.dropdown}>
+        <h3 className={filter.title}>{title}</h3>
+        <button className={filter.button} onClick={toggleDropdown}>
+          {selectedOption.label}
+          <Arrow isOpen={isOpen} />
+        </button>
+        {isOpen && (
+          <ul className={filter.list}>
+            {options.map((option, index) => (
+              <li
+                className={filter.listItem}
+                key={index}
+                onClick={() => selectOption(option)}
+              >
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </>
   );
 };

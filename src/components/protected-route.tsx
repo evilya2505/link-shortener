@@ -15,17 +15,18 @@ const Protected: React.FC<IProtectedProps> = ({
   const isRequest = useSelector((store) => store.auth.request);
   const loggedIn = useSelector((store) => store.auth.loggedIn);
   const location = useLocation();
+  const username = localStorage.getItem("username");
 
   if (isRequest) {
     return null;
   }
 
-  if (!onlyUnAuth && !loggedIn) {
+  if (!onlyUnAuth && !loggedIn && !username) {
     return <Navigate to="/login" state={{ from: location }} />;
   }
 
   if (onlyUnAuth && loggedIn) {
-    const { from } = location.state || { from: { pathname: "/dashboard" } };
+    const { from } = location.state || { from: { pathname: "/new-link" } };
 
     return <Navigate to={from} />;
   }

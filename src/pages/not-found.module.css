@@ -1,0 +1,21 @@
+.section {
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+.link {
+  color: black;
+  font-size: 20px;
+}
+
+.link:hover {
+  opacity: 0.7;
+}

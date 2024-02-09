@@ -22,32 +22,45 @@ const statisticsSlice = createSlice({
   initialState,
   reducers: {
     setTotalCount(state: TStatisticsListState, action: PayloadAction<number>) {
-        state.totalCount = action.payload;
+      state.totalCount = action.payload;
     },
     getStatisticsRequest(state: TStatisticsListState) {
-        state.request = true;
-        state.requestFailed = false;
+      state.request = true;
+      state.requestFailed = false;
     },
-    getStatisticsSuccess(state: TStatisticsListState, action: PayloadAction<TSqueezeObj[]>) {
-        state.statistics = action.payload;
-        state.request = false;
-        state.requestFailed = false;
+    getStatisticsSuccess(
+      state: TStatisticsListState,
+      action: PayloadAction<TSqueezeObj[]>
+    ) {
+      state.statistics = action.payload;
+      state.request = false;
+      state.requestFailed = false;
     },
     squeezeLinkRequest(state: TStatisticsListState) {
-        state.request = true;
-        state.requestFailed = false;
+      state.request = true;
+      state.requestFailed = false;
     },
-    squeezeLinkSuccess(state: TStatisticsListState, action: PayloadAction<TSqueezeObj>) {
-        state.lastSqueezeResult = action.payload;
-        state.request = false;
-        state.requestFailed = false;
+    squeezeLinkSuccess(
+      state: TStatisticsListState,
+      action: PayloadAction<TSqueezeObj>
+    ) {
+      state.lastSqueezeResult = action.payload;
+      state.request = false;
+      state.requestFailed = false;
     },
     requestFailed(state: TStatisticsListState) {
-        state.request = false;
-        state.requestFailed = true;
+      state.request = false;
+      state.requestFailed = true;
     },
   },
 });
-export const { setTotalCount, getStatisticsRequest, getStatisticsSuccess, requestFailed, squeezeLinkSuccess, squeezeLinkRequest } = statisticsSlice.actions;
+export const {
+  setTotalCount,
+  getStatisticsRequest,
+  getStatisticsSuccess,
+  requestFailed,
+  squeezeLinkSuccess,
+  squeezeLinkRequest,
+} = statisticsSlice.actions;
 
 export default statisticsSlice.reducer;
