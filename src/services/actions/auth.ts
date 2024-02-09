@@ -72,8 +72,6 @@ export const checkIsTokenValid = () => {
       })
       .catch((err) => {
         if (err === "Ошибка: 401") {
-          localStorage.setItem("token_error", "true");
-
           dispatch(logout());
         }
       });
