@@ -6,8 +6,9 @@ import { useDispatch } from "../services/hooks";
 import { login } from "../services/actions/auth";
 import Notification from "../components/notification/notification";
 import { useSelector } from "../services/hooks";
-
+import { useLocation } from "react-router-dom";
 const LoginPage: React.FC = (): JSX.Element => {
+  const pathname = useLocation().pathname;
   const dispatch = useDispatch();
   const onSubmit = (data: FormValues) => {
     dispatch(login(data));
@@ -18,7 +19,6 @@ const LoginPage: React.FC = (): JSX.Element => {
   const [isOnLoginError, setIsOnLoginError] = useState<boolean>(false);
   const isLoginError = useSelector((store) => store.auth.loginFailed);
   const errorText = useSelector((store) => store.auth.errorText);
-
   function onCloseNotification(name: string) {
     switch (name) {
       case "loginError":
@@ -36,7 +36,6 @@ const LoginPage: React.FC = (): JSX.Element => {
   }
 
   useEffect(() => {
-    console.log(localStorage.getItem("token_error"));
     if (localStorage.getItem("token_error")) {
       if (localStorage.getItem("token_error") === "true") {
         setIsOnTokenError(true);
@@ -50,7 +49,7 @@ const LoginPage: React.FC = (): JSX.Element => {
         localStorage.removeItem("register_success");
       }
     }
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (isLoginError) setIsOnLoginError(true);

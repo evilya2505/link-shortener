@@ -44,6 +44,8 @@ export const login = (userData: FormValues) => {
     mainApi
       .login(userData)
       .then((data) => {
+        localStorage.removeItem("token_error");
+
         localStorage.setItem("access_token", data.access_token);
         localStorage.setItem("username", userData.username);
         dispatch(loginSuccess({ username: userData.username }));
@@ -70,13 +72,9 @@ export const checkIsTokenValid = () => {
       })
       .catch((err) => {
         if (err === "Ошибка: 401") {
-          if (
-            localStorage.getItem("access_token") &&
-            localStorage.getItem("username")
-          ) {
-            localStorage.setItem("token_error", "true");
-            dispatch(logout());
-          }
+          localStorage.setItem("token_error", "true");
+
+          dispatch(logout());
         }
       });
   };
@@ -86,6 +84,7 @@ export const logout = () => {
   return function (dispatch: AppDispatch) {
     localStorage.removeItem("access_token");
     localStorage.removeItem("username");
+
     dispatch(logoutSuccess());
   };
 };

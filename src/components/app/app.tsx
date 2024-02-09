@@ -5,7 +5,7 @@ import LoginPage from "../../pages/login";
 import RegisterPage from "../../pages/register";
 import { useLocation, useNavigate } from "react-router-dom";
 import { OnlyAuth, OnlyUnAuth } from "../protected-route";
-import { useDispatch } from "../../services/hooks";
+import { useDispatch, useSelector } from "../../services/hooks";
 import NewLinkPage from "../../pages/new-link";
 import StatisticsPage from "../../pages/statistics";
 import { checkIsTokenValid } from "../../services/actions/auth";
@@ -15,7 +15,7 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const loggedIn = useSelector((store) => store.auth.loggedIn);
   useEffect(() => {
     // Если location "/" перенаправлять на /new-link
     if (location.pathname === "/") {
@@ -27,6 +27,18 @@ function App() {
   useEffect(() => {
     dispatch(checkIsTokenValid());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (
+      !loggedIn &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/register" &&
+      localStorage.getItem("username")
+    ) {
+      localStorage.setItem("token_error", "true");
+      navigate("/login");
+    }
+  }, [loggedIn, location.pathname, navigate]);
 
   return (
     <div className={app.app}>

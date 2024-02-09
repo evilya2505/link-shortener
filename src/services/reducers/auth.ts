@@ -60,6 +60,14 @@ const authSlice = createSlice({
       state.loginFailed = true;
       if (action?.payload) state.errorText = action.payload;
     },
+    tokenRequestFailed(
+      state: TAuthListState,
+      action: PayloadAction<string | undefined>
+    ) {
+      state.request = false;
+      state.loginFailed = true;
+      if (action?.payload) state.errorText = action.payload;
+    },
     registerRequestFailed(
       state: TAuthListState,
       action: PayloadAction<string | undefined>

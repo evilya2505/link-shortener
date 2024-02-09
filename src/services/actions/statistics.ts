@@ -29,6 +29,7 @@ export const getStatistics = (requestData: TSqueezeRequest) => {
       .catch((err) => {
         if (err === "Ошибка: 401") {
           localStorage.setItem("token_error", "true");
+
           dispatch(logout());
         }
         dispatch(requestFailed());
@@ -49,6 +50,7 @@ export const squeezeLink = (targetLink: string) => {
         console.log(err);
         if (err === "Ошибка: 401") {
           localStorage.setItem("token_error", "true");
+
           dispatch(logout());
         }
         dispatch(requestFailed());
